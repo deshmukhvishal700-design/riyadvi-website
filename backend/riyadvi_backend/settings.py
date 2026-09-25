@@ -121,6 +121,14 @@ CORS_ALLOWED_ORIGINS = config(
 )
 
 
+# CSRF — trust the deployed frontend/backend domains for form submissions
+# (Django admin login, etc.). Must include the scheme (https://).
+CSRF_TRUSTED_ORIGINS = config(
+    'CSRF_TRUSTED_ORIGINS',
+    default='http://localhost:5173,http://127.0.0.1:5173',
+    cast=Csv(),
+)
+
 # Django REST Framework
 
 REST_FRAMEWORK = {
