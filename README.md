@@ -229,7 +229,12 @@ performance step — see Future Improvements.
 
 ## 15. Deployment
 
-- **Frontend:** Vercel (build command `npm run build`, output directory `dist`)
-- **Backend:** Render or Railway (see deployment notes in the project's deployment guide)
+- **Frontend:** Vercel — https://riyadvi-website-olive.vercel.app
+- **Backend + Admin:** Railway — https://riyadvi-website-production.up.railway.app
+  - Admin dashboard: https://riyadvi-website-production.up.railway.app/admin/
+- **Database:** MySQL, hosted on Railway
 
-Live URLs: _to be added after deployment._
+Live URLs:
+- Website: https://riyadvi-website-olive.vercel.app
+- Backend API base: https://riyadvi-website-production.up.railway.app/api
+- Admin dashboard: https://riyadvi-website-production.up.railway.app/admin/
