@@ -5,6 +5,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Module-scoped instance so other parts of the app (e.g. ScrollToTop on
+// route change) can command the same Lenis instance instead of fighting it
+// with plain window.scrollTo, which Lenis would otherwise override.
+let lenisInstance = null
+
+export function getLenis() {
+  return lenisInstance
+}
+
 /**
  * Initializes Lenis smooth scrolling once at the app root and keeps it
  * synced with GSAP's ScrollTrigger so scroll-based animations stay
@@ -19,6 +28,7 @@ export default function useLenis() {
       duration: 1.1,
       smoothWheel: true,
     })
+    lenisInstance = lenis
 
     lenis.on('scroll', ScrollTrigger.update)
 
@@ -29,6 +39,7 @@ export default function useLenis() {
 
     return () => {
       lenis.destroy()
+      lenisInstance = null
       gsap.ticker.remove(lenis.raf)
     }
   }, [])
